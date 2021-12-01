@@ -20,7 +20,24 @@
 </head>
 
 <body>
-  <app-root></app-root>
+	<button id="btn-notify">Recibir notificaciones</button>
+      <script>
+       const btn = document.querySelector("#btn-notify");
+       document.addEventListener("DOMContentLoaded", () => {
+          btn.addEventListener("click", notifyMe);
+       });
+      const notifyMe = () => {
+           Notification.requestPermission((result) => {
+             if (result === 'granted'){
+                new Notification('Nuevo Mensaje - Pwa Maria', {
+                   body: 'Tienes notificaciones',
+                   icon: '/assets/icons/logo_mm.png',
+                });
+             }
+            });
+           }
+</script>
+<app-root></app-root>
 	<script src="/assets/js/jquery.min.js"></script>
 	<script src="/assets/js/bootstrap.min.js"></script>
 	<script src="/assets/js/slick.min.js"></script>
